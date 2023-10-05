@@ -1,6 +1,10 @@
 const router = require('express').Router();
 const { Category, Product } = require('../../models');
 
+router.use('/ping', (req, res) => {
+  res.send('ping ')
+})
+
 // http://localhost:3001/api/categories
 router.get('/', async (req, res) => {
   // Find all categories with associated products
@@ -78,6 +82,7 @@ router.put('/:id', async (req, res) => {
 
     // Display success message
     res.status(200).json(categoryData);
+
   } catch (err) {
     // Display error message
     res.status(500).json(err);
